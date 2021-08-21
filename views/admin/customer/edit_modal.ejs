@@ -1,0 +1,46 @@
+<!-- Modal -->
+<div class="modal fade" id="edit-modal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Edit Customer</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="/admin/customer?_method=PUT" method="POST">
+        <div class="modal-body">
+          <div class="form-group">
+            <!-- name -->
+            <label for="name">Name</label>
+            <input type="text" class="form-control name" name="name" placeholder="Enter name" required>
+            <!-- email -->
+            <label for="email">Email</label>
+            <input type="text" class="form-control email" name="email" placeholder="Enter email" required>
+            <!-- phone -->
+            <label for="phone">Phone</label>
+            <input type="text" class="form-control phone" name="phone" placeholder="Enter phone number" required>
+            <!-- capacity -->
+            <label for="capacity">Capacity</label>
+            <input type="text" class="form-control capacity" name="capacity" placeholder="Enter capacity" required>
+            <!-- destination -->
+            <label for="destination">Destination</label>
+            <input type="text" class="form-control" name="destination" placeholder="Pahawang or Tegalmas" required>
+            <!-- package -->
+            <label for="packages">Packages</label>
+            <input type="text" class="form-control packages" name="packages" placeholder="Open Trip or Private Trip" required>
+            <!-- date -->
+            <label for="departure_date">Date</label>
+            <input type="text" class="form-control departure_date" name="departure_date" placeholder="Enter Departure Date" required>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <input type="hidden" class="id" name="id">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
