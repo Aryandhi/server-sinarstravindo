@@ -10,7 +10,7 @@ var usersRouter = require('./routes/users');
 
 // import mongoose
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost:27017/db_sinarsTravindo', {
+mongoose.connect('mongodb://ThinkWin:w1npreneur@cluster0-shard-00-00.9vgut.mongodb.net:27017,cluster0-shard-00-01.9vgut.mongodb.net:27017,cluster0-shard-00-02.9vgut.mongodb.net:27017/db_sinarsTravindo?ssl=true&replicaSet=atlas-8dpqln-shard-0&authSource=admin&retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
