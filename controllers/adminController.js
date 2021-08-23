@@ -1,5 +1,6 @@
 const Customer = require('../models/Customer');
 const excel = require("exceljs");
+const App = require("../app");
 
 const download = (req, res) => {
   Customer.find().then((objs) => {
@@ -84,5 +85,5 @@ module.exports = {
     await customer.remove();
     res.redirect('/admin/customer');
   },
-  download,
+  download
 }
