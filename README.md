@@ -14,8 +14,14 @@ mengunduh data tersebut ke bentuk Ms. Excel sebagai bahan Laporan dan Evaluasi
 Demi mendukung kemudahan akses saya juga publish servis ini ke layanan heroku.
 
 ## Review
-./view/customer.ejs
+### Backend view
 https://drive.google.com/file/d/1jOyBDjXhwwBaEXWyJdrfKh0YeqevSf63/view?usp=sharing
+
+### Frontend home
+https://github.com/Aryandhi/sinars-travindo/tree/master
+https://drive.google.com/file/d/1bn1tATQJfOJlOujbOn31nltTFQ1c9kda/view?usp=sharing
+https://drive.google.com/file/d/13mf0AciQneZ8t5pBHXkrzddOl2ihqcZ8/view?usp=sharing
+https://drive.google.com/file/d/1u9tJnlyiAakAJZlFLVPrjtxg8mq9sriH/view?usp=sharing
 
 Salam, aryandh.a.w@gmail.com (085377745621)
 
