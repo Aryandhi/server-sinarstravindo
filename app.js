@@ -5,14 +5,14 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
 
-const bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 // import mongoose
 // mongodb://ThinkWin:w1npreneur@cluster0-shard-00-00.9vgut.mongodb.net:27017,cluster0-shard-00-01.9vgut.mongodb.net:27017,cluster0-shard-00-02.9vgut.mongodb.net:27017/db_sinarsTravindo?ssl=true&replicaSet=atlas-8dpqln-shard-0&authSource=admin&retryWrites=true&w=majority
+// mongodb://localhost:27017/db_sinarsTravindo
 const mongoose = require('mongoose'); 
-mongoose.connect('mongodb://localhost:27017/db_sinarsTravindo', {
+mongoose.connect('mongodb://ThinkWin:w1npreneur@cluster0-shard-00-00.9vgut.mongodb.net:27017,cluster0-shard-00-01.9vgut.mongodb.net:27017,cluster0-shard-00-02.9vgut.mongodb.net:27017/db_sinarsTravindo?ssl=true&replicaSet=atlas-8dpqln-shard-0&authSource=admin&retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,
@@ -28,8 +28,8 @@ const adminRouter = require('./routes/admin');
 var app = express();
 
 // Parse incoming requests data (https://github.com/expressjs/body-parser)
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: false }));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -64,9 +64,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
-
-
-
-
 
 module.exports = app;
