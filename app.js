@@ -4,17 +4,15 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const cors = require('cors');
-const router = require('express').Router();
 
 const bodyParser = require('body-parser');
-
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
 // import mongoose
+// mongodb://ThinkWin:w1npreneur@cluster0-shard-00-00.9vgut.mongodb.net:27017,cluster0-shard-00-01.9vgut.mongodb.net:27017,cluster0-shard-00-02.9vgut.mongodb.net:27017/db_sinarsTravindo?ssl=true&replicaSet=atlas-8dpqln-shard-0&authSource=admin&retryWrites=true&w=majority
 const mongoose = require('mongoose'); 
-mongoose.connect('mongodb://ThinkWin:w1npreneur@cluster0-shard-00-00.9vgut.mongodb.net:27017,cluster0-shard-00-01.9vgut.mongodb.net:27017,cluster0-shard-00-02.9vgut.mongodb.net:27017/db_sinarsTravindo?ssl=true&replicaSet=atlas-8dpqln-shard-0&authSource=admin&retryWrites=true&w=majority', {
+mongoose.connect('mongodb://localhost:27017/db_sinarsTravindo', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true,

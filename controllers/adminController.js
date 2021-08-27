@@ -1,7 +1,8 @@
 const Customer = require('../models/Customer');
+const Suggestion = require('../models/Suggestion');
 const excel = require("exceljs");
-const App = require("../app");
 
+// download customer
 const download = (req, res) => {
   Customer.find().then((objs) => {
     let customer = [];
@@ -51,10 +52,53 @@ const download = (req, res) => {
   });
 };
 
+// download suggestion
+const downloadSuggestion = (req, res) => {
+  Suggestion.find().then((objs) => {
+    let suggestion = [];
+
+    objs.forEach((obj) => {
+      suggestion.push({
+        id: obj.id,
+        email: obj.email,
+        phone: obj.phone,
+        message: obj.message
+      });
+    });
+
+    let workbook = new excel.Workbook();
+    let worksheet = workbook.addWorksheet("Suggestion");
+
+    worksheet.columns = [
+      { header: "Id", key: "id", width: 5 },
+      { header: "Email", key: "email", width: 25 },
+      { header: "Phone", key: "phone", width: 10 },
+      { header: "Message", key: "message", width: 255 }
+    ];
+
+    // Add Array Rows
+    worksheet.addRows(suggestion);
+
+    res.setHeader(
+      "Content-Type",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    );
+    res.setHeader(
+      "Content-Disposition",
+      "attachment; filename=" + "suggestions.xlsx"
+    );
+
+    return workbook.xlsx.write(res).then(function () {
+      res.status(200).end();
+    });
+  });
+};
+
 module.exports = {
   viewDashboard : (req, res) => {
     res.render('admin/dashboard/view_dashboard');
   },
+  // Customer
   viewCustomer: async(req, res) => {
     const customer = await Customer.find();
     // console.log(customer);
@@ -85,5 +129,33 @@ module.exports = {
     await customer.remove();
     res.redirect('/admin/customer');
   },
-  download
+
+  // Suggestion
+  viewSuggestion: async (req, res) => {
+    const suggestion = await Suggestion.find();
+    // console.log(suggestion);
+    res.render('admin/suggestion/view_suggestion', {suggestion});
+  },
+  addSuggestion: async (req, res) => {
+    const {email, phone, message} = req.body;
+    await Suggestion.create({email, phone, message});
+    res.redirect('/admin/suggestion');
+  },
+  editSuggestion: async(req, res) => {
+    const {id, email, phone, message} = req.body;
+    const suggestion = await Suggestion.findOne({ _id: id});
+    suggestion.email = email;
+    suggestion.phone = phone;
+    suggestion.message = message;
+    await suggestion.save();
+    res.redirect('/admin/suggestion');
+  },
+  deleteSuggestion: async (req, res) => {
+    const { id } = req.params;
+    const suggestion = await Suggestion.findOne({ _id: id });
+    await suggestion.remove();
+    res.redirect('/admin/suggestion');
+  },
+  download,
+  downloadSuggestion
 }
